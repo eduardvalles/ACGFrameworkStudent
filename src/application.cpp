@@ -1,4 +1,6 @@
 #include "application.h"
+#include "volumenode.h"
+#include "volumematerial.h"
 
 bool render_wireframe = false;
 Camera* Application::camera = nullptr;
@@ -27,6 +29,9 @@ void Application::init(GLFWwindow* window)
     example->mesh = Mesh::Get("res/meshes/sphere.obj");
     example->material = new StandardMaterial();
     this->node_list.push_back(example);
+    VolumeNode* volumeNode = new VolumeNode(0.5f);  // Example density
+    volumeNode->material = new VolumeMaterial();
+    this->node_list.push_back(volumeNode);
 }
 
 void Application::update(float dt)
