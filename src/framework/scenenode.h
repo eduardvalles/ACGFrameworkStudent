@@ -32,3 +32,15 @@ public:
 	virtual void renderWireframe(Camera* camera);
 	virtual void renderInMenu();
 };
+
+class VolumeNode : public SceneNode {
+public:
+	float density; // Density of the volume
+
+	VolumeNode();
+
+	// Custom render function for volume rendering
+	virtual void render(Camera* camera);
+	virtual void renderWireframe(Camera* camera);
+	virtual void renderInMenu();
+};

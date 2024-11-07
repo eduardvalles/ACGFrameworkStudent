@@ -57,3 +57,32 @@ public:
 	void render(Mesh* mesh, glm::mat4 model, Camera* camera);
 	void renderInMenu();
 };
+
+class VolumeMaterial : public Material {
+public:
+
+	float absorption_coefficient;
+
+	Shader* volume_shader = NULL;
+
+	VolumeMaterial(double absorption_coefficient);
+
+	void setUniforms(Camera* camera, glm::mat4 model) override {
+		setUniforms(camera, model, nullptr);
+	}
+
+	void setUniforms(Camera* camera, glm::mat4 model, Mesh* mesh);
+	void render(Mesh* mesh, glm::mat4 model, Camera* camera) override;
+	void renderInMenu() override;
+
+	//float scale;
+	//float detail;
+	//float step_length;
+
+	//Shader* volume_shader = NULL;
+	//Shader* emision_absorption_shader = NULL;
+
+
+	//void loadVDB(std::string file_path);
+	//void estimate3DTexture(easyVDB::OpenVDBReader* vdbReader);
+};
